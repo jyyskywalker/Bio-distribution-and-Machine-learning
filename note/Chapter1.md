@@ -31,4 +31,20 @@
     > contents=!ls
 3. !cd无法使用，必须使用 %cd，事实上，也可以直接使用cd
    + 类似的还有%cat, %cp, %env, %ls, %man, %mkdir, %more, %mv, %pwd, %rm, %rmdir
-   
+
+# 代码的分析和计时
+1. %timeit 和 %time
+   + 其中%%timeit实现多行代码的运行
+   + %timeit比%time要更快，%timeit避免了底层的一些时间
+   + 但是对于必须只能算一次的代码，必须得用%time    
+2. %prun用来分析整个脚本
+    + 会显示整个代码运行时不同函数调用的时间，分析后可以考虑调整哪一块
+3. line_profiler包专业分析代码
+    + `但是安装需要visual c++14`
+4. %memit 和 %mprun内存分析
+    + %memit分析单个语句内存
+    + 逐行分析要用%mprun，但是这个支队独立模块内部有用，所以要先创建模块
+        - > %%file mprun_demo.py      
+           ...      
+           from mprun_demo import sum_of_lists     
+           %mprun -f sum_of_lists sum of lists(1000000) 
