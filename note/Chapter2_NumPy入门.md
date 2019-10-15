@@ -71,3 +71,80 @@
         + 晦涩的通用函数来源时子模块**scipy.special**，包含很多在统计学中用到的
     2. 二元通用函数
 3. 高级的通用函数特性
+    + 用**out**参数指定输出，较大数组慎用out参数
+    + 聚合：> np.add.reduce(x), np.mutiply.reduce(x)
+        - 需要存储中间结果用**accumulate**
+    + **outer()** 实现矩阵外积 
+4. 聚合
+    + numpy自带sum, min, max
+    + 多维度聚合
+        - axis关键词指定的是数组会被折叠的维度 
+    + 还有其他的聚合函数可查表 
+5. 数组的计算：广播
+    + `即将低维的转化为高位后进行运算，或是将不同维数的匹配`
+    + 广播规则
+    + 变形数组关键词：**np.newaxis**
+    + 广播的用处：
+        - 归一化处理
+        - 画出二维数组
+            >   x=np.linspace(0,5,50)       
+                y=np.linspace(0,5,50)[:, np.newaxis]        
+                z=np.sin(x)**10+np.cos(10+y*x)*np.cos(x)        
+                %matplotlib inline          
+                import matplotlib.pyplot as plt         
+                plt.imshow(z, origin='lower', extent=[0, 5, 0, 5], cmap='viridis')      
+                plt.colorbar(); 
+
+6. 比较、掩码和布尔逻辑
+    + `你想基于某些准则抽取、修改、计数或对一个数组中的值进行其他操作时，就可以使用掩码。例如统计数组中有多少个值大于某一给定值，或删除所有超出某些门限值的异常点`
+    + 用比较运算符返回布尔数据类型的数组
+    + 操作布尔数组：
+        - 统计记录的个数
+            + 使用**np.count_nonzero**(也可以用sum，sum的好处是可以沿着行或列进行)
+            + > np.count_nonzero(x<6)  
+            + 统计存在或所有用**any和all**，也可以沿着特定坐标轴
+        - 布尔运算符 
+            + &、|、^、~ 
+    + 将布尔数组作为掩码
+        - 将布尔数组作为索引：
+        - > x[x<5]
+        - **`and 和 or对整个对象执行单个布尔运算，&和| 对一个对象的内容（单个比特或者字节）执行多个布尔运算`**
+
+7. 花哨的索引
++ 通过先设计特殊的索引数组，得到自己想要的索引
++ 同样可以对多为数组进行操作：
+    - > row = np.array([0,1,2])       
+        col = np.array([2,1,3])     
+        X[row,col]
+    - 如果将一个列向量和一个行向量组合在一个索引中，会得到一个二维结果
++ 示例：选择随机点
+    - > mean = [0, 0]        
+        cov = [[1, 2],               
+        [2, 5]]        
+        X = rand.multivariate_normal(mean, cov, 100)        
+        X.shape
+        %matplotlib inline        
+        import matplotlib.pyplot as plt        
+        import seaborn; seaborn.set()  # 设置绘图风格
+
+        plt.scatter(X[:, 0], X[:, 1]);
+    - > indices = np.random.choice(X.shape[0], 20, replace=False)        
+        selection = X[indices]  # 花哨的索引        
+        selection.shape
+        plt.scatter(X[:, 0], X[:, 1], alpha=0.3)        
+        plt.scatter(selection[:, 0], selection[:, 1], facecolor='none', edgecolor='b', s=200);
++ 利用索引修改值操作时注意重复
+    - 错误结果：
+        + > In[21]: i = [2, 3, 3, 4, 4, 4]        
+                    x[i] += 1        
+                    x
+            Out[21]: array([ 6.,  0.,  1.,  1.,  1.,  0.,  0.,  0.,  0.,  0.]
+    - 所以如果希望累加，可以使用at():
+        + np.add.at(x,i,1) 
+        + 也可以使用reduceat()实现数组中不同位置的reduce
+            - np.add.reduceat(np.arange(8),[0,4,1,5,2,6,3,7])[::2] 
++ 示例：数据区间划分:***P148***
+    - **`直接提供plt.hist()画出直方图`**
+    - 有时候适合大数据集的不适合小数据集，所以要有自己编好的函数集
+
+8. 数组的排序
