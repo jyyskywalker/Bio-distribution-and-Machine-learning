@@ -148,3 +148,17 @@
     - 有时候适合大数据集的不适合小数据集，所以要有自己编好的函数集
 
 8. 数组的排序
++ numpy中的sort默认是快速排序$o(NlogN)$
+    - argsort返回的是原始数组排好序的索引值
+    - 可以通过axis参数沿着多维数组的行或者列排序，但同时会丧失行列间的关系
++ sort
+    - 用axis确定多维方向
+    - argsort显示索引
++ 使用np.partition找到数组中第K小的值,输出结果新数组，最左是需要的值
+    - np.partition(x,3)
+    - np.argpartition
+    - 计算距离的快速方法:
+        +  dist_sq = np.sum((X[:,np.newaxis,:] - X[np.newaxis,:,:]) ** 2, axis=-1)
+
+9. 结构化数据：NumPy的结构化数组
++ 可以使用pandas中的DataFrame代替
