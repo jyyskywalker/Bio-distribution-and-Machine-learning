@@ -68,6 +68,9 @@
         + > data.fillna(method='bfill')
         + DataFrame需要在填充时设置坐标参数axis
 
-5. 层级索引
+5. ***层级索引*** P210
 + 直接获取
+
+
+6. 合并数据集:Concat和Append操作
 + 

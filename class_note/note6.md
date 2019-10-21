@@ -9,26 +9,26 @@
     - > myfont = FontProperties(fname=r"c:\windows\fonts\simsun.ttc",           size=14)
         plt.rcParams['font.sans-serif'] = [myfont.get_name()]  # 中文字体设置-宋体
         plt.rcParams['axes.unicode_minus'] = False #解决负号显示问题 
-    - > # pip install xlrd
-        # pip install missingno
-        # pip install matplotlib
-        # pip install seaborn
-        import pandas as pd
-        import numpy as np
-        from collections import Counter
-        from sklearn import preprocessing
-        from matplotlib import pyplot as plt
-        from matplotlib.font_manager import FontProperties
-        from scipy.special import boxcox1p
-        import seaborn as sns
-        %matplotlib inline
-        # windows下配置 font 为中文字体，自己去该路径找到自己电脑自带的字体
-        # myfont = FontProperties(fname=r"c:\windows\fonts\simsun.ttc", size=14)
-        # mac下配置 font 为中文字体，自己找到自己电脑自带的字体
-        myfont = FontProperties(fname="/System/Library/Fonts/Supplemental/Songti.ttc")
-        plt.rcParams['font.sans-serif'] = [myfont.get_name()]  # 中文字体设置-宋体
-        plt.rcParams['axes.unicode_minus'] = False  # 解决保存图像是负号'-'显示为方块的问题
-        sns.set(font=myfont.get_name())  # 解决Seaborn中文显示问题
+    - > \# pip install xlrd         
+        \# pip install missingno        
+        \# pip install matplotlib       
+        \# pip install seaborn      
+        import pandas as pd     
+        import numpy as np      
+        from collections import Counter     
+        from sklearn import preprocessing       
+        from matplotlib import pyplot as plt        
+        from matplotlib.font_manager import FontProperties      
+        from scipy.special import boxcox1p      
+        import seaborn as sns           
+        %matplotlib inline      
+        \# windows下配置 font 为中文字体，自己去该路径找到自己电脑自带的字体        
+        \# myfont = FontProperties      (fname=r"c:\windows\fonts\simsun.ttc", size=14)     
+        \# mac下配置 font 为中文字体，自己找到自己电脑自带的字体
+        myfont = FontProperties(fname="/System/Library/Fonts/      Supplemental/Songti.ttc")        
+        plt.rcParams['font.sans-serif'] = [myfont.get_name()]  # 中文字体设置-宋体      
+        plt.rcParams['axes.unicode_minus'] = False  # 解决保存图像是负号'-'显示为方块的问题         
+        sns.set(font=myfont.get_name())  # 解决Seaborn中文显示问题      
 
 
 + 数据缺失不超过20%，但也有例外，量化历史学，比如利用税收人口推断政治情况，但他们常常会缺数据
