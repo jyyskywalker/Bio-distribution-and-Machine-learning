@@ -73,4 +73,13 @@
 
 
 6. 合并数据集:Concat和Append操作
++ pd.merge()实现了一对一、多对一和多对多
+
+7. 累计与分组
++ pandas的累计方法
+    - count(),first(),last(),mean(),median(),min(),max(),std(),var(),mad(),prod(),sum()
++ GroupBy:分割、应用和组合
+    - GroupBy 中最重要的操作可能就是 aggregate、filter、transform 和 apply（累计、过滤、转换、应用）了
+
+8. 数据透视表
 + 
